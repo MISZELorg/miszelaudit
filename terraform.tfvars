@@ -1,1 +1,1 @@
-# location = "northeurope"
+location = "northeurope"

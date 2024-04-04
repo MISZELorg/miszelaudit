@@ -1,4 +1,2 @@
-# variable "location" {}
-variable "tenant_id" {
-  description = "Azure Tenant ID"
-}
+variable "location" {}
+variable "resource_group_name" {}
