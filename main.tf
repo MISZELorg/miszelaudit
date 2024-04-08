@@ -78,6 +78,5 @@ resource "azurerm_user_assigned_identity" "uami-audit-logs" {
   name                = var.audit-uami_name
   location            = azurerm_resource_group.rg-audit.location
   resource_group_name = azurerm_resource_group.rg-audit.name
-  tenant_id           = data.azurerm_client_config.current.tenant_id
   depends_on          = [azurerm_resource_group.rg-audit]
 }
