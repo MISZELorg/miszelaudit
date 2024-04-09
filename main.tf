@@ -32,7 +32,7 @@ resource "azurerm_key_vault" "kv-audit-logs" {
   location                        = azurerm_resource_group.rg-audit.location
   resource_group_name             = azurerm_resource_group.rg-audit.name
   sku_name                        = "standard"
-  tenant_id                       = data.azurerm_client_config.current.id #"48c383d8-47c5-48f9-9e8b-afe4f2519054"
+  tenant_id                       = "48c383d8-47c5-48f9-9e8b-afe4f2519054"
   enabled_for_deployment          = false
   enabled_for_disk_encryption     = true
   enabled_for_template_deployment = true
