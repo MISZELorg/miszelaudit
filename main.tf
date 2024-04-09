@@ -27,37 +27,37 @@ resource "azurerm_resource_group" "rg-audit" {
   location = var.location
 }
 
-resource "azurerm_role_assignment" "RBAC-AZTF-rg-audit-logs" {
-  scope                = azurerm_resource_group.rg-audit.id
-  role_definition_name = "Storage Account Contributor"
-  principal_id         = "d653f4c9-8886-4423-841d-e968d83e9cfd"
-  depends_on           = [azurerm_resource_group.rg-audit]
+resource "azurerm_storage_account" "sa-audit-logs" {
+  name                             = var.audit-sa_name
+  resource_group_name              = azurerm_resource_group.rg-audit.name
+  location                         = azurerm_resource_group.rg-audit.location
+  account_tier                     = "Standard"
+  account_replication_type         = "RAGRS"
+  cross_tenant_replication_enabled = false
+  allow_nested_items_to_be_public  = false
+  depends_on                       = [azurerm_resource_group.rg-audit]
+
+  network_rules {
+    default_action             = "Deny"
+    virtual_network_subnet_ids = []
+    ip_rules                   = []
+  }
+
 }
 
-resource "azurerm_role_assignment" "RBAC-AZTFREAD-rg-audit-logs" {
-  scope                = azurerm_resource_group.rg-audit.id
+resource "azurerm_role_assignment" "RBAC-AZTF-sa-audit-logs" {
+  scope                = azurerm_storage_account.sa-audit-logs.id
   role_definition_name = "Storage Account Contributor"
-  principal_id         = "60a8fcb7-ab3a-4139-81eb-1d08c600f0df"
-  depends_on           = [azurerm_resource_group.rg-audit]
+  principal_id         = "c45e89ca-8212-45e9-8b55-f26b6040f9aa"
+  depends_on           = [azurerm_storage_account.sa-audit-logs]
 }
 
-# resource "azurerm_storage_account" "sa-audit-logs" {
-#   name                             = var.audit-sa_name
-#   resource_group_name              = azurerm_resource_group.rg-audit.name
-#   location                         = azurerm_resource_group.rg-audit.location
-#   account_tier                     = "Standard"
-#   account_replication_type         = "RAGRS"
-#   cross_tenant_replication_enabled = false
-#   allow_nested_items_to_be_public  = false
-#   depends_on                       = [azurerm_resource_group.rg-audit]
-
-#   network_rules {
-#     default_action             = "Deny"
-#     virtual_network_subnet_ids = []
-#     ip_rules                   = []
-#   }
-
-# }
+resource "azurerm_role_assignment" "RBAC-AZTFREAD-sa-audit-logs" {
+  scope                = azurerm_storage_account.sa-audit-logs.id
+  role_definition_name = "Storage Account Contributor"
+  principal_id         = "3ee74291-276c-4ffc-8475-52144540279c"
+  depends_on           = [azurerm_storage_account.sa-audit-logs]
+}
 
 # resource "azurerm_storage_container" "cont-insights-activity-logs" {
 #   name                  = "insights-activity-logs"
@@ -66,9 +66,8 @@ resource "azurerm_role_assignment" "RBAC-AZTFREAD-rg-audit-logs" {
 #   depends_on = [
 #     azurerm_resource_group.rg-audit,
 #     azurerm_storage_account.sa-audit-logs,
-#     azurerm_role_assignment.RBAC-AZTF-rg-audit-logs
+#     azurerm_role_assignment.RBAC-AZTF-sa-audit-logs
 #   ]
-
 # }
 
 # resource "azurerm_storage_container" "cont-insights-operational-logs" {
@@ -78,7 +77,7 @@ resource "azurerm_role_assignment" "RBAC-AZTFREAD-rg-audit-logs" {
 #   depends_on = [
 #     azurerm_resource_group.rg-audit,
 #     azurerm_storage_account.sa-audit-logs,
-#     azurerm_role_assignment.RBAC-AZTF-rg-audit-logs
+#     azurerm_role_assignment.RBAC-AZTF-sa-audit-logs
 #   ]
 # }
 
