@@ -63,7 +63,7 @@ resource "azurerm_user_assigned_identity" "uami-audit-logs" {
 resource "azurerm_role_assignment" "RBAC-AZTF-kv-uami-audit-logs" {
   scope                = azurerm_key_vault.kv-audit-logs.id
   role_definition_name = "Key Vault Crypto Service Encryption User"
-  principal_id         = "/subscriptions/f34f6196-9ca8-445c-8e11-1db7ece881d4/resourcegroups/rg-aztf-logging-prod-ne-01/providers/Microsoft.ManagedIdentity/userAssignedIdentities/uami-nc-log-dev-ne-001"
+  principal_id         = data.azurerm_user_assigned_identity.uami-audit-logs.principal_id
   depends_on           = [azurerm_user_assigned_identity.uami-audit-logs]
 }
 
