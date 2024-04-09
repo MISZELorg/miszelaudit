@@ -50,15 +50,15 @@ resource "azurerm_key_vault" "kv-audit-logs" {
   }
 }
 
-# resource "azurerm_user_assigned_identity" "uami-audit-logs" {
-#   name                = var.audit-uami_name
-#   location            = azurerm_resource_group.rg-audit.location
-#   resource_group_name = azurerm_resource_group.rg-audit.name
-#   depends_on          = [
-#     azurerm_resource_group.rg-audit,
-#     azurerm_key_vault.kv-audit-logs
-#   ]
-# }
+resource "azurerm_user_assigned_identity" "uami-audit-logs" {
+  name                = var.audit-uami_name
+  location            = azurerm_resource_group.rg-audit.location
+  resource_group_name = azurerm_resource_group.rg-audit.name
+  depends_on = [
+    azurerm_resource_group.rg-audit,
+    azurerm_key_vault.kv-audit-logs
+  ]
+}
 
 # resource "azurerm_role_assignment" "RBAC-AZTF-kv-uami-audit-logs" {
 #   scope                = azurerm_storage_account.sa-audit-logs.id
