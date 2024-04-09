@@ -71,16 +71,16 @@ resource "azurerm_resource_group" "rg-audit" {
 
 # }
 
-resource "azurerm_storage_container" "cont-insights-operational-logs" {
-  name                  = "insights-operational-logs"
-  storage_account_name  = azurerm_storage_account.sa-audit-logs.name
-  container_access_type = "private"
-  depends_on = [
-    azurerm_resource_group.rg-audit,
-    azurerm_storage_account.sa-audit-logs,
-    azurerm_role_assignment.RBAC-AZTF-sa-audit-logs
-  ]
-}
+# resource "azurerm_storage_container" "cont-insights-operational-logs" {
+#   name                  = "insights-operational-logs"
+#   storage_account_name  = azurerm_storage_account.sa-audit-logs.name
+#   container_access_type = "private"
+#   depends_on = [
+#     azurerm_resource_group.rg-audit,
+#     azurerm_storage_account.sa-audit-logs,
+#     azurerm_role_assignment.RBAC-AZTF-sa-audit-logs
+#   ]
+# }
 
 # # resource "azurerm_log_analytics_workspace" "log-audit-logs" {
 # #   name                = var.audit-logs_name
