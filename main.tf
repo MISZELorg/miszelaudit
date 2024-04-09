@@ -27,6 +27,41 @@ resource "azurerm_resource_group" "rg-audit" {
   location = var.location
 }
 
+resource "azurerm_storage_account" "sa-audit-logs" {
+  name                             = var.audit-sa_name
+  resource_group_name              = azurerm_resource_group.rg-audit.name
+  location                         = azurerm_resource_group.rg-audit.location
+  account_tier                     = "Standard"
+  account_replication_type         = "RAGRS"
+  cross_tenant_replication_enabled = false
+  allow_nested_items_to_be_public  = false
+  depends_on                       = [azurerm_resource_group.rg-audit]
+
+  network_rules {
+    default_action             = "Deny"
+    virtual_network_subnet_ids = []
+    ip_rules                   = []
+  }
+
+}
+
+resource "azurerm_storage_container" "cont-insights-activity-logs" {
+  name                  = "insights-activity-logs"
+  storage_account_name  = azurerm_storage_account.sa-audit-logs.name
+  container_access_type = "private"
+  depends_on = [azurerm_resource_group.rg-audit,
+  azurerm_storage_account.sa-audit-logs]
+
+}
+
+resource "azurerm_storage_container" "cont-insights-operational-logs" {
+  name                  = "insights-operational-logs"
+  storage_account_name  = azurerm_storage_account.sa-audit-logs.name
+  container_access_type = "private"
+  depends_on = [azurerm_resource_group.rg-audit,
+  azurerm_storage_account.sa-audit-logs]
+}
+
 # # resource "azurerm_log_analytics_workspace" "log-audit-logs" {
 # #   name                = var.audit-logs_name
 # #   location            = azurerm_resource_group.rg-audit.location
@@ -35,36 +70,6 @@ resource "azurerm_resource_group" "rg-audit" {
 # #   retention_in_days   = 365
 # #   depends_on          = [azurerm_resource_group.rg-audit]
 # # }
-
-# resource "azurerm_storage_account" "sa-audit-logs" {
-#   name                             = var.audit-sa_name
-#   resource_group_name              = azurerm_resource_group.rg-audit.name
-#   location                         = azurerm_resource_group.rg-audit.location
-#   account_tier                     = "Standard"
-#   account_replication_type         = "RAGRS"
-#   cross_tenant_replication_enabled = false
-#   allow_nested_items_to_be_public  = false
-#   depends_on                       = [azurerm_resource_group.rg-audit]
-
-#   network_rules {
-#     default_action             = "Deny"
-#     virtual_network_subnet_ids = []
-#     ip_rules                   = []
-#   }
-
-# }
-
-# resource "azurerm_storage_container" "cont-insights-activity-logs" {
-#   name                  = "insights-activity-logs"
-#   storage_account_name  = azurerm_storage_account.sa-audit-logs.name
-#   container_access_type = "private"
-# }
-
-# resource "azurerm_storage_container" "cont-insights-operational-logs" {
-#   name                  = "insights-operational-logs"
-#   storage_account_name  = azurerm_storage_account.sa-audit-logs.name
-#   container_access_type = "private"
-# }
 
 # resource "azurerm_role_assignment" "RBAC-AZTF-sa-audit-logs" {
 #   scope                = azurerm_storage_account.sa-audit-logs.id
