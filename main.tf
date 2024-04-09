@@ -101,7 +101,6 @@ resource "azurerm_storage_management_policy" "sa-audit-logs-mgmt-policy" {
         tier_to_archive_after_days_since_modification_greater_than = 90
         delete_after_days_since_modification_greater_than          = 2555
       }
-      snapshot {}
     }
   }
 }
