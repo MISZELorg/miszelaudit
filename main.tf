@@ -67,13 +67,13 @@ resource "azurerm_storage_container" "cont-insights-operational-logs" {
 }
 
 resource "azurerm_role_assignment" "RBAC-AZTF-sa-audit-logs" {
-  scope                = data.azurerm_subscription.primary.id
+  scope                = azurerm_storage_account.sa-audit-logs.id
   role_definition_name = "Storage Account Contributor"
   principal_id         = "b3ae950a-0982-4faa-b768-b218e93b7629"
 }
 
 resource "azurerm_role_assignment" "RBAC-AZTFREAD-sa-audit-logs" {
-  scope                = data.azurerm_subscription.primary.id
+  scope                = azurerm_storage_account.sa-audit-logs.id
   role_definition_name = "Storage Account Contributor"
   principal_id         = "601d8142-9c6c-4064-bd58-f87191dd4426"
 }
