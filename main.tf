@@ -85,6 +85,27 @@ resource "azurerm_storage_account" "sa-audit-logs" {
 
 }
 
+resource "azurerm_storage_management_policy" "sa-audit-logs-mgmt-policy" {
+  storage_account_id = azurerm_storage_account.sa-audit-logs.id
+
+  rule {
+    name    = "AuditLogsRule"
+    enabled = true
+    filters {
+      prefix_match = []
+      blob_types   = ["blockBlob"]
+    }
+    actions {
+      base_blob {
+        tier_to_cool_after_days_since_modification_greater_than    = 30
+        tier_to_archive_after_days_since_modification_greater_than = 90
+        delete_after_days_since_modification_greater_than          = 2555
+      }
+      snapshot {}
+    }
+  }
+}
+
 resource "azurerm_role_assignment" "RBAC-AZTF-sa-audit-logs" {
   scope                = azurerm_storage_account.sa-audit-logs.id
   role_definition_name = "Storage Account Contributor"
