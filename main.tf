@@ -45,15 +45,15 @@ resource "azurerm_storage_account" "sa-audit-logs" {
 
 }
 
-resource "azurerm_role_assignment" "RBAC-AZTF-sa-audit-logs" {
-  scope                = azurerm_storage_account.sa-audit-logs.id
+resource "azurerm_role_assignment" "RBAC-AZTF-rg-audit-logs" {
+  scope                = azurerm_resource_group.rg-audit.id
   role_definition_name = "Storage Account Contributor"
   principal_id         = "d653f4c9-8886-4423-841d-e968d83e9cfd"
   depends_on           = [azurerm_storage_account.sa-audit-logs]
 }
 
-resource "azurerm_role_assignment" "RBAC-AZTFREAD-sa-audit-logs" {
-  scope                = azurerm_storage_account.sa-audit-logs.id
+resource "azurerm_role_assignment" "RBAC-AZTFREAD-rg-audit-logs" {
+  scope                = azurerm_resource_group.rg-audit.id
   role_definition_name = "Storage Account Contributor"
   principal_id         = "60a8fcb7-ab3a-4139-81eb-1d08c600f0df"
   depends_on           = [azurerm_storage_account.sa-audit-logs]
@@ -66,7 +66,7 @@ resource "azurerm_storage_container" "cont-insights-activity-logs" {
   depends_on = [
     azurerm_resource_group.rg-audit,
     azurerm_storage_account.sa-audit-logs,
-    azurerm_role_assignment.RBAC-AZTF-sa-audit-logs
+    azurerm_role_assignment.RBAC-AZTF-rg-audit-logs
   ]
 
 }
@@ -78,7 +78,7 @@ resource "azurerm_storage_container" "cont-insights-operational-logs" {
   depends_on = [
     azurerm_resource_group.rg-audit,
     azurerm_storage_account.sa-audit-logs,
-    azurerm_role_assignment.RBAC-AZTF-sa-audit-logs
+    azurerm_role_assignment.RBAC-AZTF-rg-audit-logs
   ]
 }
 
