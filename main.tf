@@ -60,12 +60,12 @@ resource "azurerm_user_assigned_identity" "uami-audit-logs" {
   ]
 }
 
-# resource "azurerm_role_assignment" "RBAC-AZTF-kv-uami-audit-logs" {
-#   scope                = azurerm_storage_account.sa-audit-logs.id
-#   role_definition_name = "Key Vault Crypto Service Encryption User"
-#   principal_id         = azurerm_user_assigned_identity.uami-audit-logs.id
-#   depends_on           = [azurerm_user_assigned_identity.uami-audit-logs]
-# }
+resource "azurerm_role_assignment" "RBAC-AZTF-kv-uami-audit-logs" {
+  scope                = azurerm_key_vault.kv-audit-logs.id
+  role_definition_name = "Key Vault Crypto Service Encryption User"
+  principal_id         = azurerm_user_assigned_identity.uami-audit-logs.id
+  depends_on           = [azurerm_user_assigned_identity.uami-audit-logs]
+}
 
 resource "azurerm_storage_account" "sa-audit-logs" {
   name                             = var.audit-sa_name
