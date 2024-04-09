@@ -27,6 +27,13 @@ resource "azurerm_resource_group" "rg-audit" {
   location = var.location
 }
 
+resource "azurerm_role_assignment" "example" {
+  scope                = azurerm_resource_group.rg-audit.id
+  role_definition_name = "Storage Account Contributor"
+  principal_id         = "c45e89ca-8212-45e9-8b55-f26b6040f9aa"
+  depends_on           = [azurerm_resource_group.rg-audit]
+}
+
 # resource "azurerm_storage_account" "sa-audit-logs" {
 #   name                             = var.audit-sa_name
 #   resource_group_name              = azurerm_resource_group.rg-audit.name
