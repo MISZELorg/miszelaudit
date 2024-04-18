@@ -126,12 +126,10 @@ resource "azurerm_role_assignment" "RBAC-AZTFREAD-sa-audit-logs" {
 # #   depends_on          = [azurerm_resource_group.rg-audit]
 # # }
 
-
-
 # This is the module call
 module "keyvault" {
-  source = "./keyvault"
-  # source             = "Azure/avm-res-keyvault-vault/azurerm"
+  # source = "./keyvault"
+  source              = "Azure/avm-res-keyvault-vault/azurerm"
   name                = module.naming.key_vault.name_unique
   enable_telemetry    = var.enable_telemetry
   location            = module.keyvault.azurerm_resource_group.this.location
