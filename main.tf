@@ -126,12 +126,12 @@ resource "azurerm_role_assignment" "RBAC-AZTFREAD-sa-audit-logs" {
 # #   depends_on          = [azurerm_resource_group.rg-audit]
 # # }
 
-module "key_vault" {
-  source              = "./keyvault"
-  resource_group_name = azurerm_resource_group.rg-audit
-  location            = azurerm_resource_group.rg-audit.location
-  kv_name             = var.kv_name
-  kv_sku_name         = var.kv_name
-  kv_ip_rules         = var.kv_ip_rules
+module "keyvault" {
+  source      = "./keyvault"
+  rg_name     = module.rg.azurerm_resource_group.rg.name
+  location    = azurerm_resource_group.rg-audit.location
+  kv_name     = var.kv_name
+  kv_sku_name = var.kv_name
+  kv_ip_rules = var.kv_ip_rules
 }
 

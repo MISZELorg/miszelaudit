@@ -1,7 +1,7 @@
 resource "azurerm_key_vault" "key_vault" {
   name                            = var.kv_name
   location                        = var.location
-  resource_group_name             = var.resource_group_name
+  resource_group_name             = var.rg_name
   tenant_id                       = data.azurerm_client_config.current.tenant_id
   enabled_for_disk_encryption     = true
   enabled_for_deployment          = false
@@ -12,7 +12,7 @@ resource "azurerm_key_vault" "key_vault" {
   sku_name                        = var.kv_sku_name
   public_network_access_enabled   = false
   depends_on = [
-    azurerm_resource_group.rg-audit,
+    module.rg.azurerm_resource_group.rg,
   ]
 
   network_acls {
