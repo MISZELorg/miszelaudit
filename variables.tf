@@ -26,3 +26,7 @@ variable "kv_sku_name" {
 variable "kv_ip_rules" {
   type = list(string)
 }
+
+variable "uami_name" {
+
+}
