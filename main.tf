@@ -130,9 +130,9 @@ resource "azurerm_role_assignment" "RBAC-AZTFREAD-sa-audit-logs" {
 module "keyvault" {
   # source = "./keyvault"
   source              = "Azure/avm-res-keyvault-vault/azurerm"
-  name                = module.naming.key_vault.name_unique
+  name                = var.kvname
   enable_telemetry    = var.enable_telemetry
-  location            = module.keyvault.azurerm_resource_group.this.location
-  resource_group_name = module.keyvault.azurerm_resource_group.this.name
+  location            = var.location
+  resource_group_name = var.resource_group_name
   tenant_id           = data.azurerm_client_config.this.tenant_id
 }

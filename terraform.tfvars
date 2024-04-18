@@ -4,3 +4,4 @@ audit-logs_name     = "log-aztf-audit-logs-prod-ne-01"
 audit-sa_name       = "miszelauditlogne01"
 audit-kv_name       = "kv-aztf-log-prod-ne-02" # set to 01 once purged
 audit-uami_name     = "uami-aztf-log-dev-ne-01"
+kvname              = "kv-aztf-log-prod-ne-03"
