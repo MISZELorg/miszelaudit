@@ -126,6 +126,12 @@ resource "azurerm_role_assignment" "RBAC-AZTFREAD-sa-audit-logs" {
 # #   depends_on          = [azurerm_resource_group.rg-audit]
 # # }
 
+module "rg" {
+  source   = "./rg"
+  rg_name  = var.rg_name
+  location = var.location
+}
+
 module "keyvault" {
   source      = "./keyvault"
   rg_name     = module.rg.azurerm_resource_group.rg.name
