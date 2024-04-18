@@ -145,10 +145,11 @@ module "keyvault" {
   ]
 }
 
-resource "azurerm_user_assigned_identity" "uami" {
-  name                = var.uami_name
-  location            = var.location
-  resource_group_name = var.rg_name
+module "uami" {
+  source    = "./uami"
+  rg_name   = var.rg_name
+  location  = var.location
+  uami_name = var.uami_name
   depends_on = [
     module.rg,
     module.keyvault
