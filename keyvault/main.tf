@@ -11,9 +11,6 @@ resource "azurerm_key_vault" "key_vault" {
   purge_protection_enabled        = false #change to true once ready
   sku_name                        = var.kv_sku_name
   public_network_access_enabled   = false
-  depends_on = [
-    module.rg,
-  ]
 
   network_acls {
     bypass                     = "AzureServices"
