@@ -12,7 +12,7 @@ resource "azurerm_key_vault" "key_vault" {
   sku_name                        = var.kv_sku_name
   public_network_access_enabled   = false
   depends_on = [
-    module.rg.azurerm_resource_group.rg,
+    module.rg,
   ]
 
   network_acls {
