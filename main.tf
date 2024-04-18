@@ -137,7 +137,7 @@ module "keyvault" {
   rg_name     = var.rg_name
   location    = var.location
   kv_name     = var.kv_name
-  kv_sku_name = var.kv_name
+  kv_sku_name = var.kv_sku_name
   kv_ip_rules = var.kv_ip_rules
 
   depends_on = [
