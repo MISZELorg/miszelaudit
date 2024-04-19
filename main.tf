@@ -110,7 +110,7 @@ module "roleassignment-spn-sa-2" {
   ]
 }
 
-module "roleassignment-spn-sa-3" {
+module "roleassignment-spn-sa-3" { ## rename to ...-admin-sa-3
   source               = "./roleassignment"
   scope                = module.sa.sa_id
   role_definition_name = "Storage Account Contributor"
