@@ -30,14 +30,14 @@ variable "kv_ip_rules" {
   type = list(string)
 }
 
-variable "scope" {
+# variable "scope" {
 
-}
+# }
 
-variable "role_definition_name" {
+# variable "role_definition_name" {
 
-}
+# }
 
-variable "principal_id" {
+# variable "principal_id" {
 
-}
+# }
