@@ -50,11 +50,47 @@ module "roleassignment-uami-kv" {
   ]
 }
 
+module "roleassignment-admin-kv" {
+  source               = "./roleassignment"
+  scope                = module.keyvault.keyvault_id
+  role_definition_name = "Key Vault Administrator"
+  principal_id         = var.admin
+  depends_on = [
+    module.rg,
+    module.keyvault,
+    module.uami
+  ]
+}
+
+module "roleassignment-spn-kv" {
+  source               = "./roleassignment"
+  scope                = module.keyvault.keyvault_id
+  role_definition_name = "Key Vault Administrator"
+  principal_id         = var.spn_admin
+  depends_on = [
+    module.rg,
+    module.keyvault,
+    module.uami
+  ]
+}
+
+module "roleassignment-spn-kv2" {
+  source               = "./roleassignment"
+  scope                = module.keyvault.keyvault_id
+  role_definition_name = "Key Vault Reader"
+  principal_id         = var.spn_reader
+  depends_on = [
+    module.rg,
+    module.keyvault,
+    module.uami
+  ]
+}
+
 module "roleassignment-spn-sa" {
   source               = "./roleassignment"
   scope                = module.sa.sa_id
   role_definition_name = "Storage Account Contributor"
-  principal_id         = "c45e89ca-8212-45e9-8b55-f26b6040f9aa"
+  principal_id         = var.spn_admin
   depends_on = [
     module.rg,
     module.keyvault,
@@ -66,7 +102,19 @@ module "roleassignment-spn-sa-2" {
   source               = "./roleassignment"
   scope                = module.sa.sa_id
   role_definition_name = "Storage Account Contributor"
-  principal_id         = "3ee74291-276c-4ffc-8475-52144540279c"
+  principal_id         = var.spn_reader
+  depends_on = [
+    module.rg,
+    module.keyvault,
+    module.uami
+  ]
+}
+
+module "roleassignment-spn-sa-3" {
+  source               = "./roleassignment"
+  scope                = module.sa.sa_id
+  role_definition_name = "Storage Account Contributor"
+  principal_id         = var.admin
   depends_on = [
     module.rg,
     module.keyvault,

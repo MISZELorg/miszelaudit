@@ -29,3 +29,15 @@ variable "rg_name" {
 variable "sa_name" {
 
 }
+
+variable "admin" {
+
+}
+
+variable "spn_admin" {
+
+}
+
+variable "spn_reader" {
+
+}
