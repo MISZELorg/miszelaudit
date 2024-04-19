@@ -132,6 +132,16 @@ module "rg" {
   location = var.location
 }
 
+module "sa" {
+  source   = "./sa"
+  rg_name  = var.rg_name
+  location = var.location
+  sa_name  = var.sa_name
+  depends_on = [
+    module.rg,
+  ]
+}
+
 module "keyvault" {
   source      = "./keyvault"
   rg_name     = var.rg_name
@@ -168,6 +178,30 @@ module "roleassignment-uami-kv" {
   ]
 }
 
+module "roleassignment-spn-sa" {
+  source               = "./roleassignment"
+  scope                = module.sa.sa_id
+  role_definition_name = "Storage Account Contributor"
+  principal_id         = "c45e89ca-8212-45e9-8b55-f26b6040f9aa"
+  depends_on = [
+    module.rg,
+    module.keyvault,
+    module.uami
+  ]
+}
+
+module "roleassignment-spn-sa-2" {
+  source               = "./roleassignment"
+  scope                = module.sa.sa_id
+  role_definition_name = "Storage Account Contributor"
+  principal_id         = "3ee74291-276c-4ffc-8475-52144540279c"
+  depends_on = [
+    module.rg,
+    module.keyvault,
+    module.uami
+  ]
+}
+
 module "laws" {
   source    = "./laws"
   rg_name   = var.rg_name
@@ -177,15 +211,5 @@ module "laws" {
     module.rg,
     module.keyvault,
     module.uami
-  ]
-}
-
-module "sa" {
-  source   = "./sa"
-  rg_name  = var.rg_name
-  location = var.location
-  sa_name  = var.sa_name
-  depends_on = [
-    module.rg,
   ]
 }
