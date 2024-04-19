@@ -158,9 +158,9 @@ module "uami" {
 
 module "roleassignment-uami-kv" {
   source               = "./roleassignment"
-  scope                = module.keyvault.azurerm_key_vault.key_vault.id
+  scope                = module.keyvault.id
   role_definition_name = "Key Vault Crypto Service Encryption User"
-  principal_id         = module.uami.data.azurerm_user_assigned_identity.uami-logs.principal_id
+  principal_id         = module.uami.principal_id
   depends_on = [
     module.rg,
     module.keyvault,
