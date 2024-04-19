@@ -179,3 +179,13 @@ module "laws" {
     module.uami
   ]
 }
+
+module "sa" {
+  source   = "./sa"
+  rg_name  = var.rg_name
+  location = var.location
+  sa_name  = var.sa_name
+  depends_on = [
+    module.rg,
+  ]
+}
