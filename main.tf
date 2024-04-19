@@ -167,3 +167,15 @@ module "roleassignment-uami-kv" {
     module.uami
   ]
 }
+
+module "laws" {
+  source    = "./laws"
+  rg_name   = var.rg_name
+  location  = var.location
+  logs_name = var.logs_name
+  depends_on = [
+    module.rg,
+    module.keyvault,
+    module.uami
+  ]
+}
