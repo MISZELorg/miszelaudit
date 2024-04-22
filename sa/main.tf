@@ -18,7 +18,7 @@ resource "azurerm_storage_account" "sa-logs" {
 resource "azurerm_storage_account_customer_managed_key" "cmk-logs" {
   storage_account_id        = azurerm_storage_account.sa-logs.id
   key_vault_id              = var.keyvault_id
-  key_name                  = var.kv_name
+  key_name                  = var.key_name
   user_assigned_identity_id = var.uami_id
 }
 
