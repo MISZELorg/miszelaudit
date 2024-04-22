@@ -42,6 +42,7 @@ module "roleassignment-uami-kv" {
   scope                = module.keyvault.keyvault_id
   role_definition_name = "Key Vault Crypto Service Encryption User"
   principal_id         = module.uami.uami-logs_id
+  principal_type       = "User"
   depends_on = [
     module.rg,
     module.keyvault,
@@ -54,6 +55,7 @@ module "roleassignment-admin-kv" {
   scope                = module.keyvault.keyvault_id
   role_definition_name = "Key Vault Administrator"
   principal_id         = var.admin
+  principal_type       = "User"
   depends_on = [
     module.rg,
     module.keyvault,
@@ -66,6 +68,7 @@ module "roleassignment-spn-kv" {
   scope                = module.keyvault.keyvault_id
   role_definition_name = "Key Vault Administrator"
   principal_id         = var.spn_admin
+  principal_type       = "ServicePrincipal"
   depends_on = [
     module.rg,
     module.keyvault,
@@ -78,6 +81,7 @@ module "roleassignment-spn-kv2" {
   scope                = module.keyvault.keyvault_id
   role_definition_name = "Key Vault Reader"
   principal_id         = var.spn_reader
+  principal_type       = "ServicePrincipal"
   depends_on = [
     module.rg,
     module.keyvault,
@@ -90,6 +94,7 @@ module "roleassignment-spn-sa" {
   scope                = module.sa.sa_id
   role_definition_name = "Storage Account Contributor"
   principal_id         = var.spn_admin
+  principal_type       = "ServicePrincipal"
   depends_on = [
     module.rg,
     module.sa,
@@ -102,6 +107,7 @@ module "roleassignment-spn-sa-2" {
   scope                = module.sa.sa_id
   role_definition_name = "Storage Account Contributor"
   principal_id         = var.spn_reader
+  principal_type       = "ServicePrincipal"
   depends_on = [
     module.rg,
     module.sa,
@@ -114,6 +120,7 @@ module "roleassignment-spn-sa-3" {
   scope                = module.sa.sa_id
   role_definition_name = "Storage Account Contributor"
   principal_id         = var.admin
+  principal_type       = "ServicePrincipal"
   depends_on = [
     module.rg,
     module.sa,
