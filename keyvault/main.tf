@@ -45,3 +45,26 @@ resource "azurerm_key_vault_key" "key1" {
     notify_before_expiry = "P29D"
   }
 }
+
+resource "random_password" "username" {
+  length           = 14
+  special          = true
+  override_special = "_%@"
+}
+
+resource "azurerm_key_vault_secret" "username" {
+  name         = "setupadmin-username"
+  value        = random_password.username.result
+  key_vault_id = azurerm_key_vault.key_vault.id
+}
+
+resource "random_password" "password" {
+  length  = 20
+  special = false
+}
+
+resource "azurerm_key_vault_secret" "password" {
+  name         = "setupadmin-password"
+  value        = random_password.password.result
+  key_vault_id = azurerm_key_vault.key_vault.id
+}
