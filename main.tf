@@ -129,6 +129,32 @@ module "roleassignment-spn-sa-3" {
   ]
 }
 
+module "roleassignment-spn-sa-4" {
+  source               = "./roleassignment"
+  scope                = module.sa.sa_id
+  role_definition_name = "Storage Blob Data Contributor"
+  principal_id         = var.spn_reader
+  principal_type       = "ServicePrincipal"
+  depends_on = [
+    module.rg,
+    module.sa,
+    module.uami
+  ]
+}
+
+module "roleassignment-spn-sa-5" {
+  source               = "./roleassignment"
+  scope                = module.sa.sa_id
+  role_definition_name = "Storage Blob Data Contributor"
+  principal_id         = var.spn_admin
+  principal_type       = "User"
+  depends_on = [
+    module.rg,
+    module.sa,
+    module.uami
+  ]
+}
+
 module "laws" {
   source    = "./laws"
   rg_name   = var.rg_name
