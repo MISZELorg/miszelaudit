@@ -34,7 +34,7 @@ module "uami" {
   uami_name = var.uami_name
   depends_on = [
     module.rg,
-    module.keyvault
+    # module.keyvault
   ]
 }
 
@@ -93,7 +93,7 @@ module "roleassignment-spn-sa" {
   principal_id         = var.spn_admin
   depends_on = [
     module.rg,
-    module.keyvault,
+    # module.keyvault,
     module.uami
   ]
 }
@@ -105,7 +105,7 @@ module "roleassignment-spn-sa-2" {
   principal_id         = var.spn_reader
   depends_on = [
     module.rg,
-    module.keyvault,
+    # module.keyvault,
     module.uami
   ]
 }
@@ -117,7 +117,7 @@ module "roleassignment-spn-sa-3" {
   principal_id         = var.admin
   depends_on = [
     module.rg,
-    module.keyvault,
+    # module.keyvault,
     module.uami
   ]
 }
@@ -129,7 +129,7 @@ module "laws" {
   logs_name = var.logs_name
   depends_on = [
     module.rg,
-    module.keyvault,
+    # module.keyvault,
     module.uami
   ]
 }
