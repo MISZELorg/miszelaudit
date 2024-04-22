@@ -6,6 +6,6 @@ data "azurerm_key_vault" "key_vault" {
 }
 
 data "azurerm_key_vault_key" "key1" {
-  name         = "kv-aztf-log-prod-ne-001-kek"
-  key_vault_id = data.azurerm_key_vault.key_vault.id
+  name         = azurerm_key_vault_key.key1.name
+  key_vault_id = azurerm_key_vault.key_vault.id
 }
