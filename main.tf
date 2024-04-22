@@ -120,7 +120,7 @@ module "roleassignment-spn-sa-3" {
   scope                = module.sa.sa_id
   role_definition_name = "Storage Account Contributor"
   principal_id         = var.admin
-  principal_type       = "ServicePrincipal"
+  principal_type       = "User"
   depends_on = [
     module.rg,
     module.sa,
