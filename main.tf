@@ -147,7 +147,7 @@ module "roleassignment-spn-sa-5" {
   scope                = module.sa.sa_id
   role_definition_name = "Storage Blob Data Contributor"
   principal_id         = var.spn_admin
-  principal_type       = "User"
+  principal_type       = "ServicePrincipal"
   depends_on = [
     module.rg,
     module.sa,
