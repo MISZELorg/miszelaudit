@@ -10,7 +10,7 @@ resource "azurerm_key_vault" "key_vault" {
   soft_delete_retention_days      = 90
   purge_protection_enabled        = false #change to true once ready
   sku_name                        = var.kv_sku_name
-  public_network_access_enabled   = false
+  public_network_access_enabled   = true
 
   network_acls {
     bypass                     = "AzureServices"
