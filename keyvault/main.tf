@@ -21,27 +21,27 @@ resource "azurerm_key_vault" "key_vault" {
 
 }
 
-# resource "azurerm_key_vault_key" "key1" {
-#   name         = "kv-aztf-log-prod-ne-001-kek"
-#   key_vault_id = azurerm_key_vault.key_vault.id
-#   key_type     = "RSA"
-#   key_size     = 2048
+resource "azurerm_key_vault_key" "key1" {
+  name         = "kv-aztf-log-prod-ne-001-kek"
+  key_vault_id = azurerm_key_vault.key_vault.id
+  key_type     = "RSA"
+  key_size     = 2048
 
-#   key_opts = [
-#     "decrypt",
-#     "encrypt",
-#     "sign",
-#     "unwrapKey",
-#     "verify",
-#     "wrapKey",
-#   ]
+  key_opts = [
+    "decrypt",
+    "encrypt",
+    "sign",
+    "unwrapKey",
+    "verify",
+    "wrapKey",
+  ]
 
-#   rotation_policy {
-#     automatic {
-#       time_before_expiry = "P30D"
-#     }
+  rotation_policy {
+    automatic {
+      time_before_expiry = "P30D"
+    }
 
-#     expire_after         = "P90D"
-#     notify_before_expiry = "P29D"
-#   }
-# }
+    expire_after         = "P90D"
+    notify_before_expiry = "P29D"
+  }
+}
