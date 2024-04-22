@@ -10,7 +10,7 @@ resource "azurerm_storage_account" "sa-logs" {
   network_rules {
     default_action             = "Deny"
     virtual_network_subnet_ids = []
-    ip_rules                   = []
+    ip_rules                   = var.kv_ip_rules
   }
 
 }
