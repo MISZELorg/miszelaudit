@@ -13,6 +13,7 @@ module "sa" {
   uami_id     = module.uami.uami_id
   keyvault_id = module.keyvault.keyvault_id
   kv_name     = var.kv_name
+  key_name    = var.key_name
   depends_on = [
     module.rg,
     module.uami,

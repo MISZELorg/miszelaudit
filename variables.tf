@@ -6,6 +6,10 @@ variable "kv_name" {
 
 }
 
+variable "key_name" {
+
+}
+
 variable "kv_sku_name" {
 
 }
