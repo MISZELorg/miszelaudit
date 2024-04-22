@@ -5,10 +5,11 @@ module "rg" {
 }
 
 module "sa" {
-  source   = "./sa"
-  rg_name  = var.rg_name
-  location = var.location
-  sa_name  = var.sa_name
+  source      = "./sa"
+  rg_name     = var.rg_name
+  location    = var.location
+  sa_name     = var.sa_name
+  kv_ip_rules = var.kv_ip_rules
   depends_on = [
     module.rg,
   ]
