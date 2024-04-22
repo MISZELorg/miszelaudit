@@ -5,3 +5,7 @@ output "tenantid" {
 output "keyvault_id" {
   value = data.azurerm_key_vault.key_vault.id
 }
+
+output "key_name" {
+  value = data.azurerm_key_vault_key.key1.id
+}
