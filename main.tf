@@ -10,8 +10,8 @@ module "sa" {
   location    = var.location
   sa_name     = var.sa_name
   kv_ip_rules = var.kv_ip_rules
-  uami_id     = module.uami.data.azurerm_user_assigned_identity.uami-logs.id
-  keyvault_id = module.keyvault.data.azurerm_key_vault.key_vault.id
+  uami_id     = module.uami.uami-logs_id
+  keyvault_id = module.keyvault.keyvault_id
   kv_name     = var.kv_name
   depends_on = [
     module.rg,
