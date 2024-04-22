@@ -8,7 +8,7 @@ resource "azurerm_storage_account" "sa-logs" {
   allow_nested_items_to_be_public  = false
 
   network_rules {
-    default_action             = "Deny"
+    default_action             = "Allow"
     virtual_network_subnet_ids = []
     ip_rules                   = var.kv_ip_rules
   }
