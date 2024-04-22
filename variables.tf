@@ -41,3 +41,11 @@ variable "spn_admin" {
 variable "spn_reader" {
 
 }
+
+variable "keyvault_id" {
+
+}
+
+variable "uami_id" {
+
+}
