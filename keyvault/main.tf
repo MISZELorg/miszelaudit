@@ -8,7 +8,7 @@ resource "azurerm_key_vault" "key_vault" {
   enabled_for_template_deployment = true
   enable_rbac_authorization       = true
   soft_delete_retention_days      = 90
-  purge_protection_enabled        = false #change to true once ready
+  purge_protection_enabled        = true
   sku_name                        = var.kv_sku_name
   public_network_access_enabled   = true
 
