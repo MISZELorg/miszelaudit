@@ -10,6 +10,6 @@ variable "location" {
 
 }
 
-# variable "kv_ip_rules" {
-#   type = list(string)
-# }
+variable "kv_ip_rules" {
+  type = list(string)
+}
