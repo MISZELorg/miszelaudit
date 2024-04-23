@@ -11,8 +11,9 @@ module "sa" {
   sa_name        = var.sa_name
   github_runners = var.github_runners
   keyvault_id    = module.keyvault.keyvault_id
-  # kv_name        = var.kv_name
-  key_name = module.keyvault.key_name
+  key_id         = module.keyvault.key_id
+  uami_id        = module.uami.uami_id
+  # key_name = module.keyvault.key_name
   depends_on = [
     module.rg,
     module.uami,
@@ -103,7 +104,7 @@ module "roleassignment-spn-sa" {
   principal_type       = "ServicePrincipal"
   depends_on = [
     module.rg,
-    module.sa,
+    # module.sa,
     module.uami
   ]
 }
@@ -116,7 +117,7 @@ module "roleassignment-spn-sa-2" {
   principal_type       = "ServicePrincipal"
   depends_on = [
     module.rg,
-    module.sa,
+    # module.sa,
     module.uami
   ]
 }
@@ -129,7 +130,7 @@ module "roleassignment-spn-sa-3" {
   principal_type       = "User"
   depends_on = [
     module.rg,
-    module.sa,
+    # module.sa,
     module.uami
   ]
 }
@@ -142,7 +143,7 @@ module "roleassignment-spn-sa-4" {
   principal_type       = "ServicePrincipal"
   depends_on = [
     module.rg,
-    module.sa,
+    # module.sa,
     module.uami
   ]
 }
@@ -155,7 +156,7 @@ module "roleassignment-spn-sa-5" {
   principal_type       = "ServicePrincipal"
   depends_on = [
     module.rg,
-    module.sa,
+    # module.sa,
     module.uami
   ]
 }
