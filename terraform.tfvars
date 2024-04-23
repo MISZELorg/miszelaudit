@@ -1,7 +1,7 @@
 github_runners = ["84.10.55.110", "13.74.50.171"]
 location       = "northeurope"
 rg_name        = "rg-aztf-logging-prod-ne-02"
-kv_name        = "kv-aztf-log-prod-ne-02"
+kv_name        = "kv-aztf-log-prod-ne-04"
 kv_sku_name    = "standard"
 uami_name      = "uami-aztf-log-prod-ne-02"
 logs_name      = "log-aztf-audit-logs-prod-ne-02"
