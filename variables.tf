@@ -42,10 +42,10 @@ variable "spn_reader" {
 
 }
 
-variable "key_id" {
+# variable "key_id" {
 
-}
+# }
 
-variable "uami_id" {
+# variable "uami_id" {
 
-}
+# }
