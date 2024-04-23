@@ -5,15 +5,15 @@ module "rg" {
 }
 
 module "sa" {
-  source      = "./sa"
-  rg_name     = var.rg_name
-  location    = var.location
-  sa_name     = var.sa_name
-  kv_ip_rules = var.kv_ip_rules
-  uami_id     = module.uami.uami_id
-  keyvault_id = module.keyvault.keyvault_id
-  kv_name     = var.kv_name
-  key_name    = module.keyvault.key_name
+  source         = "./sa"
+  rg_name        = var.rg_name
+  location       = var.location
+  sa_name        = var.sa_name
+  github_runners = var.github_runners
+  uami_id        = module.uami.uami_id
+  keyvault_id    = module.keyvault.keyvault_id
+  kv_name        = var.kv_name
+  key_name       = module.keyvault.key_name
   depends_on = [
     module.rg,
     module.uami,
@@ -22,12 +22,12 @@ module "sa" {
 }
 
 module "keyvault" {
-  source      = "./keyvault"
-  rg_name     = var.rg_name
-  location    = var.location
-  kv_name     = var.kv_name
-  kv_sku_name = var.kv_sku_name
-  kv_ip_rules = var.kv_ip_rules
+  source         = "./keyvault"
+  rg_name        = var.rg_name
+  location       = var.location
+  kv_name        = var.kv_name
+  kv_sku_name    = var.kv_sku_name
+  github_runners = var.github_runners
 
   depends_on = [
     module.rg,

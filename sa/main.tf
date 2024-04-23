@@ -10,16 +10,16 @@ resource "azurerm_storage_account" "sa-logs" {
   network_rules {
     default_action             = "Allow"
     virtual_network_subnet_ids = []
-    ip_rules                   = var.kv_ip_rules
+    ip_rules                   = var.github_runners
   }
 
 }
 
 resource "azurerm_storage_account_customer_managed_key" "cmk-logs" {
-  storage_account_id        = azurerm_storage_account.sa-logs.id
-  key_vault_id              = var.keyvault_id
-  key_name                  = var.key_name
-  user_assigned_identity_id = var.uami_id
+  storage_account_id = azurerm_storage_account.sa-logs.id
+  key_vault_id       = var.keyvault_id
+  key_name           = var.key_name
+  # user_assigned_identity_id = var.uami_id
 }
 
 resource "azurerm_storage_container" "cont-insights-activity-logs" {
