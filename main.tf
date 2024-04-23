@@ -65,7 +65,7 @@ module "laws" {
   ]
 }
 
-module "roleassignment-spn_admin-kv" {
+module "roleassignment-spn_admin-kv-admin" {
   source               = "./roleassignment"
   scope                = module.keyvault.keyvault_id
   role_definition_name = "Key Vault Administrator"
@@ -77,7 +77,7 @@ module "roleassignment-spn_admin-kv" {
   ]
 }
 
-module "roleassignment-spn_reader-kv2" {
+module "roleassignment-spn_reader-kv-reader" {
   source               = "./roleassignment"
   scope                = module.keyvault.keyvault_id
   role_definition_name = "Key Vault Reader"
@@ -135,7 +135,7 @@ module "sa" {
     module.rg,
     module.uami,
     module.keyvault,
-    module.roleassignment-spn-rg-datareader,
+    module.roleassignment-spn_reader-rg-datareader,
     module.roleassignment-spn_reader-rg-blobreader,
     module.roleassignment-spn_admin-rg-blobcontr
   ]
@@ -153,7 +153,7 @@ module "roleassignment-spn_admin-sa-contr" {
   ]
 }
 
-module "roleassignment-admin-sa" {
+module "roleassignment-admin-sa-contr" {
   source               = "./roleassignment"
   scope                = module.sa.sa_id
   role_definition_name = "Storage Account Contributor"
