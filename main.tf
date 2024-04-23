@@ -104,7 +104,7 @@ module "roleassignment-spn-sa" {
   principal_type       = "ServicePrincipal"
   depends_on = [
     module.rg,
-    module.sa,
+    # module.sa,
     module.uami
   ]
 }
@@ -117,7 +117,7 @@ module "roleassignment-spn-sa-2" {
   principal_type       = "ServicePrincipal"
   depends_on = [
     module.rg,
-    module.sa,
+    # module.sa,
     module.uami
   ]
 }
@@ -130,7 +130,7 @@ module "roleassignment-spn-sa-3" {
   principal_type       = "User"
   depends_on = [
     module.rg,
-    module.sa,
+    # module.sa,
     module.uami
   ]
 }
@@ -143,7 +143,7 @@ module "roleassignment-spn-sa-4" {
   principal_type       = "ServicePrincipal"
   depends_on = [
     module.rg,
-    module.sa,
+    # module.sa,
     module.uami
   ]
 }
@@ -156,7 +156,7 @@ module "roleassignment-spn-sa-5" {
   principal_type       = "ServicePrincipal"
   depends_on = [
     module.rg,
-    module.sa,
+    # module.sa,
     module.uami
   ]
 }
