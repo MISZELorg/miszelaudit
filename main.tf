@@ -77,18 +77,6 @@ module "roleassignment-spn_admin-kv" {
   ]
 }
 
-module "roleassignment-admin-kv" {
-  source               = "./roleassignment"
-  scope                = module.keyvault.keyvault_id
-  role_definition_name = "Key Vault Administrator"
-  principal_id         = var.admin
-  principal_type       = "ServicePrincipal"
-  depends_on = [
-    module.rg,
-    module.keyvault
-  ]
-}
-
 module "roleassignment-spn_reader-kv2" {
   source               = "./roleassignment"
   scope                = module.keyvault.keyvault_id
