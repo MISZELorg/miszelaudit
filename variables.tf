@@ -41,3 +41,7 @@ variable "spn_admin" {
 variable "spn_reader" {
 
 }
+
+variable "rg_name2" {
+
+}
