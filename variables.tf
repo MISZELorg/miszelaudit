@@ -6,15 +6,11 @@ variable "kv_name" {
 
 }
 
-# variable "key_name" {
-
-# }
-
 variable "kv_sku_name" {
 
 }
 
-variable "kv_ip_rules" {
+variable "github_runners" {
   type = list(string)
 }
 

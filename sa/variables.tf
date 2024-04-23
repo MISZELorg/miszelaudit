@@ -10,7 +10,7 @@ variable "location" {
 
 }
 
-variable "kv_ip_rules" {
+variable "github_runners" {
   type = list(string)
 }
 
