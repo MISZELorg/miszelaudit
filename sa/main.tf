@@ -51,6 +51,15 @@ resource "azurerm_storage_container" "cont-insights-operational-logs" {
   ]
 }
 
+resource "azurerm_storage_container" "test" {
+  name                  = "test"
+  storage_account_name  = azurerm_storage_account.sa-logs.name
+  container_access_type = "private"
+  depends_on = [
+    azurerm_storage_account.sa-logs,
+  ]
+}
+
 resource "azurerm_storage_management_policy" "sa-logs-mgmt-policy" {
   storage_account_id = azurerm_storage_account.sa-logs.id
 
