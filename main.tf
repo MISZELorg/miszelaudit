@@ -11,8 +11,8 @@ module "sa" {
   sa_name        = var.sa_name
   github_runners = var.github_runners
   keyvault_id    = module.keyvault.keyvault_id
-  kv_name        = var.kv_name
-  key_name       = module.keyvault.key_name
+  # kv_name        = var.kv_name
+  key_name = module.keyvault.key_name
   depends_on = [
     module.rg,
     module.uami,

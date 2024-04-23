@@ -15,11 +15,11 @@ resource "azurerm_storage_account" "sa-logs" {
 
 }
 
-# resource "azurerm_storage_account_customer_managed_key" "cmk-logs" {
-#   storage_account_id = azurerm_storage_account.sa-logs.id
-#   key_vault_id       = var.keyvault_id
-#   key_name           = var.key_name
-# }
+resource "azurerm_storage_account_customer_managed_key" "cmk-logs" {
+  storage_account_id = azurerm_storage_account.sa-logs.id
+  key_vault_id       = var.keyvault_id
+  key_name           = var.key_name
+}
 
 resource "azurerm_storage_container" "cont-insights-activity-logs" {
   name                  = "insights-activity-logs"
@@ -32,15 +32,6 @@ resource "azurerm_storage_container" "cont-insights-activity-logs" {
 
 resource "azurerm_storage_container" "cont-insights-operational-logs" {
   name                  = "insights-operational-logs"
-  storage_account_name  = azurerm_storage_account.sa-logs.name
-  container_access_type = "private"
-  depends_on = [
-    azurerm_storage_account.sa-logs,
-  ]
-}
-
-resource "azurerm_storage_container" "cont-test" {
-  name                  = "test"
   storage_account_name  = azurerm_storage_account.sa-logs.name
   container_access_type = "private"
   depends_on = [
