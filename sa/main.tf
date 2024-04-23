@@ -7,6 +7,13 @@ resource "azurerm_storage_account" "sa-logs" {
   cross_tenant_replication_enabled = false
   allow_nested_items_to_be_public  = false
 
+  lifecycle {
+    ignore_changes = [
+      customer_managed_key,
+      identity
+    ]
+  }
+
   network_rules {
     default_action             = "Allow"
     virtual_network_subnet_ids = []
@@ -15,11 +22,13 @@ resource "azurerm_storage_account" "sa-logs" {
 
 }
 
-# resource "azurerm_storage_account_customer_managed_key" "cmk-logs" {
-#   storage_account_id = azurerm_storage_account.sa-logs.id
-#   key_vault_id       = var.keyvault_id
-#   key_name           = var.key_name
-# }
+resource "azurerm_storage_account_customer_managed_key" "cmk-logs" {
+  storage_account_id        = azurerm_storage_account.sa-logs.id
+  key_vault_id              = var.keyvault_id
+  key_name                  = var.key_name
+  user_assigned_identity_id = var.uami_id
+
+}
 
 resource "azurerm_storage_container" "cont-insights-activity-logs" {
   name                  = "insights-activity-logs"

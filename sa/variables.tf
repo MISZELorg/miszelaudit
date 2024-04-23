@@ -18,15 +18,7 @@ variable "keyvault_id" {
 
 }
 
-# variable "kv_name" {
-
-# }
-
-# variable "key_name" {
-
-# }
-
-variable "key_id" {
+variable "key_name" {
 
 }
 
