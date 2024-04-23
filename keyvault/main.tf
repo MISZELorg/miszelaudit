@@ -26,6 +26,9 @@ resource "azurerm_key_vault_key" "key1" {
   key_vault_id = azurerm_key_vault.key_vault.id
   key_type     = "RSA"
   key_size     = 2048
+  depends_on = [
+    azurerm_key_vault.key_vault
+  ]
 
   key_opts = [
     "decrypt",
@@ -50,21 +53,33 @@ resource "random_password" "username" {
   length           = 14
   special          = true
   override_special = "_%@"
+  depends_on = [
+    azurerm_key_vault.key_vault
+  ]
 }
 
 resource "azurerm_key_vault_secret" "username" {
   name         = "setupadmin-username"
   value        = random_password.username.result
   key_vault_id = azurerm_key_vault.key_vault.id
+  depends_on = [
+    random_password.username
+  ]
 }
 
 resource "random_password" "password" {
   length  = 20
   special = false
+  depends_on = [
+    azurerm_key_vault.key_vault
+  ]
 }
 
 resource "azurerm_key_vault_secret" "password" {
   name         = "setupadmin-password"
   value        = random_password.password.result
   key_vault_id = azurerm_key_vault.key_vault.id
+  depends_on = [
+    random_password.password
+  ]
 }
