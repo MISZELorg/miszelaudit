@@ -9,8 +9,7 @@ resource "azurerm_storage_account" "sa-logs" {
 
   lifecycle {
     ignore_changes = [
-      customer_managed_key,
-      identity
+      customer_managed_key
     ]
   }
 
