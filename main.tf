@@ -147,7 +147,6 @@ module "sa" {
     module.keyvault,
     module.roleassignment-spn_reader-rg-blobreader,
     module.roleassignment-spn_admin-rg-blobcontr,
-    module.roleassignment-admin-rg-sacontr,
     module.roleassignment-spn_admin-rg-sacontr,
     module.roleassignment-spn_reader-rg-sacontr
   ]
