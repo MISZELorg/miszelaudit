@@ -13,7 +13,6 @@ module "sa" {
   keyvault_id    = module.keyvault.keyvault_id
   key_id         = module.keyvault.key_id
   uami_id        = module.uami.uami_id
-  # key_name = module.keyvault.key_name
   depends_on = [
     module.rg,
     module.uami,
