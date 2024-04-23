@@ -18,7 +18,7 @@ resource "azurerm_storage_account" "sa-logs" {
   }
 
   network_rules {
-    default_action             = "Allow"
+    default_action             = "Deny"
     virtual_network_subnet_ids = []
     ip_rules                   = var.github_runners
   }
