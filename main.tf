@@ -132,6 +132,17 @@ module "roleassignment-spn_reader-rg-sacontr" {
   ]
 }
 
+module "roleassignment-spn_admin-rg-sadatareader" {
+  source               = "./roleassignment"
+  scope                = module.rg.rg_id
+  role_definition_name = "Reader and Data Access"
+  principal_id         = var.spn_admin
+  principal_type       = "ServicePrincipal"
+  depends_on = [
+    module.rg
+  ]
+}
+
 module "sa" {
   source         = "./sa"
   rg_name        = var.rg_name
@@ -176,29 +187,3 @@ module "laws" {
     module.sa
   ]
 }
-
-############################################
-
-# module "roleassignment-spn_reader-rg-datareader" {
-#   source               = "./roleassignment"
-#   scope                = module.rg.rg_id
-#   role_definition_name = "Reader and Data Access"
-#   principal_id         = var.spn_reader
-#   principal_type       = "ServicePrincipal"
-#   depends_on = [
-#     module.rg
-#   ]
-# }
-
-# module "roleassignment-spn-sa-2" {
-#   source               = "./roleassignment"
-#   scope                = module.sa.sa_id
-#   role_definition_name = "Storage Account Contributor"
-#   principal_id         = var.spn_reader
-#   principal_type       = "ServicePrincipal"
-#   depends_on = [
-#     module.rg,
-#     module.sa,
-#     module.uami
-#   ]
-# }
