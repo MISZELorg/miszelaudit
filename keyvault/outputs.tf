@@ -9,3 +9,7 @@ output "keyvault_id" {
 output "key_name" {
   value = data.azurerm_key_vault_key.key1.name
 }
+
+output "key_id" {
+  value = data.azurerm_key_vault_key.key1.id
+}
