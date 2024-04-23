@@ -56,6 +56,19 @@ module "roleassignment-uami-kv" {
   ]
 }
 
+module "roleassignment-admin-crypto-kv" {
+  source               = "./roleassignment"
+  scope                = module.keyvault.keyvault_id
+  role_definition_name = "Key Vault Crypto Service Encryption User"
+  principal_id         = var.spn_admin
+  principal_type       = "ServicePrincipal"
+  depends_on = [
+    module.rg,
+    module.keyvault,
+    module.uami
+  ]
+}
+
 module "roleassignment-admin-kv" {
   source               = "./roleassignment"
   scope                = module.keyvault.keyvault_id
