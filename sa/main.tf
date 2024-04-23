@@ -7,10 +7,6 @@ resource "azurerm_storage_account" "sa-logs" {
   cross_tenant_replication_enabled = false
   allow_nested_items_to_be_public  = false
 
-  identity {
-    type = "SystemAssigned"
-  }
-
   lifecycle {
     ignore_changes = [
       customer_managed_key
