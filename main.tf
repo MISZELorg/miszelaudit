@@ -135,7 +135,7 @@ module "sa" {
     module.rg,
     module.uami,
     module.keyvault,
-    module.roleassignment-spn-datareader,
+    module.roleassignment-spn-rg-datareader,
     module.roleassignment-spn_reader-rg-blobreader,
     module.roleassignment-spn_admin-rg-blobcontr
   ]
