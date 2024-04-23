@@ -160,6 +160,19 @@ module "roleassignment-spn-sa-5" {
   ]
 }
 
+module "roleassignment-uami-kv" {
+  source               = "./roleassignment"
+  scope                = module.keyvault.keyvault_id
+  role_definition_name = "Key Vault Crypto Service Encryption User"
+  principal_id         = var.spn_admin
+  principal_type       = "ServicePrincipal"
+  depends_on = [
+    module.rg,
+    module.keyvault,
+    module.uami
+  ]
+}
+
 module "laws" {
   source    = "./laws"
   rg_name   = var.rg_name
