@@ -10,7 +10,7 @@ module "sa" {
   location       = var.location
   sa_name        = var.sa_name
   github_runners = var.github_runners
-  uami_id        = module.uami.uami_id
+  uami_id        = module.uami.uami-logs_id
   keyvault_id    = module.keyvault.keyvault_id
   kv_name        = var.kv_name
   key_name       = module.keyvault.key_name
