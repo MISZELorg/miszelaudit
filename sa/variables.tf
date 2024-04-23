@@ -25,7 +25,3 @@ variable "kv_name" {
 variable "key_name" {
 
 }
-
-variable "uami_id" {
-
-}
