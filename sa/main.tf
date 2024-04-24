@@ -20,12 +20,7 @@ resource "azurerm_storage_account" "sa-logs" {
   network_rules {
     default_action = "Deny"
 
-    dynamic "ip_rules" {
-      for_each = var.github_runners
-      content {
-        ip_address_or_range = ip_rules.value
-      }
-    }
+    ip_rules = ["13.74.50.171"]
   }
 
 }

@@ -11,7 +11,7 @@ variable "location" {
 }
 
 variable "github_runners" {
-  type = list(string)
+
 }
 
 variable "keyvault_id" {
