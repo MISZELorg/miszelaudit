@@ -144,14 +144,14 @@ module "roleassignment-spn_admin-rg-sadatareader" {
 }
 
 module "sa" {
-  source      = "./sa"
-  rg_name     = var.rg_name
-  location    = var.location
-  sa_name     = var.sa_name
-  saip        = var.saip
-  keyvault_id = module.keyvault.keyvault_id
-  key_name    = module.keyvault.key_name
-  uami_id     = module.uami.uami_id
+  source         = "./sa"
+  rg_name        = var.rg_name
+  location       = var.location
+  sa_name        = var.sa_name
+  github_runners = var.github_runners
+  keyvault_id    = module.keyvault.keyvault_id
+  key_name       = module.keyvault.key_name
+  uami_id        = module.uami.uami_id
   depends_on = [
     module.rg,
     module.uami,
