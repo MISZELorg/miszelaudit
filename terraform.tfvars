@@ -1,8 +1,8 @@
-github_runners = ["13.74.50.171", "84.10.55.110"]
-saip           = ["13.74.50.171"]
+github_runners = ["13.74.50.171", "84.10.55.110", "108.143.124.46"]
+saip           = ["108.143.124.46"]
 location       = "northeurope"
 rg_name        = "rg-aztf-logging-prod-ne-02"
-kv_name        = "kv-aztf-log-prod-ne-06"
+kv_name        = "kv-aztf-log-prod-ne-07"
 kv_sku_name    = "standard"
 uami_name      = "uami-aztf-log-prod-ne-02"
 logs_name      = "log-aztf-audit-logs-prod-ne-02"
