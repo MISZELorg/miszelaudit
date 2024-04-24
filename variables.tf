@@ -1,6 +1,9 @@
+# variable "github_runners" {
+#   type    = list(string)
+# }
+
 variable "github_runners" {
-  type    = list(string)
-  default = ["13.74.50.171", "84.10.55.110"]
+
 }
 
 variable "location" {
