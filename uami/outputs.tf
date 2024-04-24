@@ -1,7 +1,7 @@
 output "uami-logs_id" {
-  value = data.azurerm_user_assigned_identity.uami-logs.principal_id
+  value = azurerm_user_assigned_identity.uami.principal_id
 }
 
 output "uami_id" {
-  value = data.azurerm_user_assigned_identity.uami-logs.id
+  value = azurerm_user_assigned_identity.uami.id
 }
