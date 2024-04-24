@@ -22,7 +22,10 @@ variable "uami_id" {
 
 }
 
-variable "saip" {
+# variable "saip" {
 
+# }
+
+variable "github_runners" {
+  type = list(string)
 }
-
