@@ -2,10 +2,6 @@ variable "github_runners" {
   type = list(string)
 }
 
-# variable "saip" {
-
-# }
-
 variable "location" {
 
 }
