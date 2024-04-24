@@ -14,10 +14,6 @@ variable "kv_sku_name" {
 
 }
 
-# variable "github_runners" {
-#   type = list(string)
-# }
-
 variable "github_runners" {
-
+  type = list(string)
 }

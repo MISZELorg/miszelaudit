@@ -20,7 +20,7 @@ resource "azurerm_storage_account" "sa-logs" {
   network_rules {
     default_action = "Deny"
 
-    ip_rules = var.github_runners
+    ip_rules = var.saip
   }
 
 }

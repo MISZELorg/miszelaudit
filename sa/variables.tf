@@ -10,10 +10,6 @@ variable "location" {
 
 }
 
-variable "github_runners" {
-
-}
-
 variable "keyvault_id" {
 
 }
@@ -23,6 +19,10 @@ variable "key_name" {
 }
 
 variable "uami_id" {
+
+}
+
+variable "saip" {
 
 }
 

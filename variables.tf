@@ -1,8 +1,8 @@
-# variable "github_runners" {
-#   type    = list(string)
-# }
-
 variable "github_runners" {
+  type = list(string)
+}
+
+variable "saip" {
 
 }
 
