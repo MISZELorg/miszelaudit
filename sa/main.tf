@@ -18,9 +18,14 @@ resource "azurerm_storage_account" "sa-logs" {
   }
 
   network_rules {
-    default_action             = "Allow"
-    virtual_network_subnet_ids = []
-    ip_rules                   = var.github_runners
+    default_action = "Deny"
+
+    dynamic "ip_rule" {
+      for_each = var.github_runners
+      content {
+        ip_address_or_range = ip_rule.value
+      }
+    }
   }
 
 }
