@@ -1,7 +1,13 @@
-module "rg" {
-  source   = "./rg"
-  rg_name  = var.rg_name
-  location = var.location
+resource "azurerm_resource_group" "example" {
+  name     = "example-RG"
+  location = "North Europe"
+
+  # Tags for the Resource Group
+  tags = {
+    Environment = "Prod"
+    Owner       = "kmiszel"
+    Source      = "terraform"
+  }
 }
 
 # module "uami" {
