@@ -11,7 +11,7 @@ permissions:
 jobs:
   terraform-unit-tests:
     name: 'Terraform Unit Tests'
-    runs-on: self-hosted
+    runs-on: docker
     
     steps:
     # Checkout the repository to the GitHub Actions runner
