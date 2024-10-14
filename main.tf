@@ -1,14 +1,14 @@
-resource "azurerm_resource_group" "example" {
-  name     = "example-RG"
-  location = "North Europe"
+# resource "azurerm_resource_group" "example" {
+#   name     = "example-RG"
+#   location = "North Europe"
 
-  # Tags for the Resource Group
-  tags = {
-    Environment = "Prod"
-    Owner       = "kmiszel"
-    Source      = "terraform"
-  }
-}
+#   # Tags for the Resource Group
+#   tags = {
+#     Environment = "Prod"
+#     Owner       = "kmiszel"
+#     Source      = "terraform"
+#   }
+# }
 
 # module "uami" {
 #   source    = "./uami"
