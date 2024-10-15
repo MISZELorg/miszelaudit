@@ -11,7 +11,7 @@ permissions:
 jobs:
   terraform-unit-tests:
     name: 'Terraform Unit Tests'
-    runs-on: testrunner
+    runs-on: ghrunner
     
     steps:
     # Checkout the repository to the GitHub Actions runner
